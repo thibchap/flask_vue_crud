@@ -2,6 +2,9 @@
 
 App based on https://testdriven.io/blog/developing-a-single-page-app-with-flask-and-vuejs/
 
+It performs the four CRUD operations on a list of books: 
+> Create, Read, Update and Delete.
+
 # Server
 
 ```
