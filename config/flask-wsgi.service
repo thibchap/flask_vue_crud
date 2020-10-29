@@ -1,0 +1,14 @@
+# Copy to /etc/systemd/system/flask-wsgi.service
+# Start with:     sudo systemctl start flask-wsgi
+[Unit]
+Description=Gunicorn instance to serve flask-wgsi-backend
+After=network.target
+
+[Service]
+User=pi
+Group=www-data
+WorkingDirectory=/home/pi/workspace/flask_vue_crud/server
+ExecStart=gunicorn --workers 4 --bind unix:app.sock -m 007 wsgi:app
+
+[Install]
+WantedBy=multi-user.target

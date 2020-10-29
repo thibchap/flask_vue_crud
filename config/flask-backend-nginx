@@ -1,0 +1,13 @@
+# To copy to /etc/nginx/sites-available/flask-backend-nginx
+# Then create a SymLink: 
+# sudo ln -s /etc/nginx/sites-available/flask-backend-nginx /etc/nginx/sites-enabled
+
+server {
+    listen   5000; ## listen for port 5000
+    server_name _;
+
+    location / {
+        include proxy_params;
+        proxy_pass http://unix:/home/pi/workspace/flask_vue_crud/server/app.sock;
+    }
+}

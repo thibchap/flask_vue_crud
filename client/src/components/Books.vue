@@ -118,6 +118,8 @@
 import axios from 'axios';
 import Alert from './Alert.vue';
 
+/** The base URL of the backend server */
+const BACKEND_URL = 'http://192.168.1.129:5000';
 /**
  * Helper function to delay using a promise
  */
@@ -153,7 +155,7 @@ export default {
      * Sends a GET request to `/books` and update the books list.
      */
     getBooks() {
-      const path = 'http://localhost:5000/books';
+      const path = `${BACKEND_URL}/books`;
       axios.get(path)
         .then((res) => {
           this.books = res.data.books;
@@ -167,7 +169,7 @@ export default {
      * Sends a POST request to `/books` to add a new book.
      */
     addBook(payload) {
-      const path = 'http://localhost:5000/books';
+      const path = `${BACKEND_URL}/books`;
       axios.post(path, payload)
         .then(() => {
           this.getBooks();
@@ -184,7 +186,7 @@ export default {
      * Sends AJAX request PUT to `/books/<book_id>`.
      */
     updateBook(payload, bookID) {
-      const path = `http://localhost:5000/books/${bookID}`;
+      const path = `${BACKEND_URL}/books/${bookID}`;
       axios.put(path, payload)
         .then(() => {
           this.getBooks();
@@ -201,7 +203,7 @@ export default {
      * Sends AJAX request DELETE to `/books/<book_id>`.
      */
     removeBook(bookID) {
-      const path = `http://localhost:5000/books/${bookID}`;
+      const path = `${BACKEND_URL}/books/${bookID}`;
       axios.delete(path)
         .then(() => {
           this.getBooks();
